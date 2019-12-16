@@ -358,9 +358,34 @@ SEKCJA "CONTACT"
     padding-top: 40px;
 }
 
-.nav-icon {
+.menu-button {
     display: none;
 }
+
+
+@keyframes rotateAnim {
+  	0% { transform: scale(1) rotate(0);}
+	25% {transform: scale(1.1) rotate(-1turn);}
+	50% {transform: scale(1.2) rotate(0);}
+	75% {transform: scale(1.1) rotate(1turn);}
+  	100% {transform: scale(1) rotate(0);}
+}
+
+
+@keyframes blurAnim {
+	0% {filter: hue-rotate(360deg);}
+  	25% {filter: hue-rotate(240deg);}
+	50% {filter: hue-rotate(180deg);}
+  	75% {filter: hue-rotate(90deg);}
+	100% {filter: hue-rotate(0deg);}
+
+}
+
+.gallery__image: hover {
+        animation: rotateAnim 3 s,
+        blurAnim 3 s;
+
+
 
 /* //////////////////////////////// MOBILE STYLES //////////////////////////////// */
 
@@ -375,10 +400,7 @@ SEKCJA "CONTACT"
     ######################################
     */
 
-    .button {
-        width: 100%;
-        height: 40px;
-    }
+    
 
     /*
     ######################################
@@ -608,11 +630,59 @@ SEKCJA "CONTACT"
         line-height: 1.77;
     }
 
-    .nav-icon {
+    .menu-button {
         display: block;
     }
 
-    .page-navigation__items {
+    .page-navigation {
         display: none;
     }
+
+    .page-navigation--visible {
+        display: block;
+    }
+
+
+.menu-button {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: rgba(204, 200, 255, 0.8);;
+  margin: 6px 0;
+      -webkit-transition: .9s ease-in-out;
+  -moz-transition: .9s ease-in-out;
+  -o-transition: .9s ease-in-out;
+  transition: .9s ease-in-out;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+    -webkit-transition: .9s ease-in-out;
+  -moz-transition: .9s ease-in-out;
+  -o-transition: .9s ease-in-out;
+  transition: .9s ease-in-out;
+  
+}
+
+.change .bar2 {opacity: 0;
+    -webkit-transition: .9s ease-in-out;
+  -moz-transition: .9s ease-in-out;
+  -o-transition: .9s ease-in-out;
+  transition: .9s ease-in-out;
+  }
+
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+      -webkit-transition: .9s ease-in-out;
+  -moz-transition: .9s ease-in-out;
+  -o-transition: .9s ease-in-out;
+  transition: .9s ease-in-out;
+}
 }
