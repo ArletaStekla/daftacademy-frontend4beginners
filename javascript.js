@@ -1,29 +1,39 @@
-document.querySelector(".nav-icon").onclick = function() {
-  if (document.querySelector(".page-navigation__items").style.display === "block") {
-    document.querySelector(".page-navigation__items").style.display = "none";
-  } else {  
-    document.querySelector(".page-navigation__items").style.display = "block";
-  }
-};
+// Show/hide page navigation
+const menuButton = document.querySelector('#hamburger');
 
-
-document.querySelector(".button").onclick = function() {
-  var para = document.createElement("P");
-  para.innerHTML = "Have fun!";
-  document.querySelector(".concerts__info").appendChild(para);
-  document.querySelector(".button").remove();
-}
-
-
-const form = document.querySelector('form');
-  form.addEventListener('submit', (e) => {
-
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('email', document.getElementById("email").value);
-    formData.append('topic', document.getElementById("topic").value);
-
-  for(var pair of formData.entries()) {
-    console.log(pair[0]+ ': '+ pair[1]); 
-  }
+menuButton.addEventListener('click', (e) => {
+    const pageNavigation = document.querySelector('.page-navigation');
+    pageNavigation.classList.toggle('page-navigation--visible');
 });
+
+// Mark ticket as bought
+const concerts = document.querySelector('#concerts');
+
+concerts.addEventListener('click', (e) => {
+    if (e.target.classList.contains('button--buy-ticket')) {
+        const buyTicketButton = e.target;
+        const haveFunText = document.createElement('p');
+        haveFunText.textContent = 'Have fun!';
+
+        const buttonContainer = buyTicketButton.parentElement;
+        buttonContainer.insertBefore(haveFunText, buyTicketButton);
+        buyTicketButton.remove();
+        // OR
+        // buyTicketButton.replaceWith(haveFunText);
+    }
+});
+
+// Log form data
+const contactForm = document.querySelector('.contact__form');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formObject = Object.fromEntries(formData);
+    console.log(formObject);
+});
+
+
+function myFunction(x) {
+  x.classList.toggle("change");
+}
